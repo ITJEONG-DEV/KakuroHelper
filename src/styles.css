@@ -811,3 +811,63 @@ a.app-tile:focus-visible {
   color: var(--danger);
   border-color: var(--danger);
 }
+
+/* ---------- 입력 줄 (휴대폰 한 화면에 맞춤) ---------- */
+
+.controls {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+}
+
+.controls .mode-switch {
+  flex: 1;
+  min-width: 0;
+  padding: 3px;
+}
+
+.controls .mode-switch button {
+  padding: 6px 4px;
+  white-space: nowrap;
+}
+
+.controls .tool {
+  flex: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 0 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.controls .tool.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.controls .tool:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.numpad.one-row {
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.numpad.one-row .num {
+  min-height: 46px;
+  padding: 0;
+}
+
+.numpad.one-row .num-digit {
+  font-size: 1.25rem;
+}
+
+.numpad.one-row .num.erase {
+  font-size: 1.15rem;
+  color: var(--muted);
+}

@@ -405,39 +405,41 @@ export default function App() {
             selected !== null && game.puzzle.white[selected] && <ComboInfo lay={lay} values={game.values} cell={selected} />
           )}
 
-          <div className="mode-switch" role="radiogroup" aria-label="입력 방식">
-            <button type="button" role="radio" aria-checked={mode === 'value'} className={mode === 'value' ? 'on' : ''} onClick={() => mode !== 'value' && dispatch({ type: 'toggleMode' })}>
-              숫자
+          {/* 휴대폰 한 화면에 판·입력·힌트가 다 들어오도록 자주 쓰는 것만 한 줄에 모은다 */}
+          <div className="controls">
+            <div className="mode-switch" role="radiogroup" aria-label="입력 방식">
+              <button type="button" role="radio" aria-checked={mode === 'value'} className={mode === 'value' ? 'on' : ''} onClick={() => mode !== 'value' && dispatch({ type: 'toggleMode' })}>
+                숫자
+              </button>
+              <button type="button" role="radio" aria-checked={mode === 'mark'} className={mode === 'mark' ? 'on' : ''} onClick={() => mode !== 'mark' && dispatch({ type: 'toggleMode' })}>
+                후보수
+              </button>
+            </div>
+            <button type="button" className="tool" onClick={() => dispatch({ type: 'undo' })} disabled={!state.history.length}>
+              실행 취소
             </button>
-            <button type="button" role="radio" aria-checked={mode === 'mark'} className={mode === 'mark' ? 'on' : ''} onClick={() => mode !== 'mark' && dispatch({ type: 'toggleMode' })}>
-              후보수
+            <button type="button" className="tool primary" onClick={() => dispatch({ type: 'hint' })} disabled={solved}>
+              {hint && hintLevel < 3 ? '다음 힌트' : '힌트'}
             </button>
-            <span className="mode-key">Space 또는 N으로 전환</span>
           </div>
 
-          <div className={`numpad ${mode === 'mark' ? 'mark-mode' : ''}`}>
+          <div className={`numpad one-row ${mode === 'mark' ? 'mark-mode' : ''}`}>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((d) => (
               <button key={d} type="button" className="num" onClick={() => dispatch({ type: 'input', digit: d })}>
                 <span className="num-digit">{d}</span>
               </button>
             ))}
-            <button type="button" className="num erase" onClick={() => dispatch({ type: 'erase' })}>
-              지우기
+            <button type="button" className="num erase" aria-label="지우기" onClick={() => dispatch({ type: 'erase' })}>
+              ⌫
             </button>
           </div>
 
           <div className="toolbar">
-            <button type="button" onClick={() => dispatch({ type: 'undo' })} disabled={!state.history.length}>
-              실행 취소
-            </button>
             <button type="button" onClick={() => dispatch({ type: 'fillMarks' })}>
               후보 채우기
             </button>
             <button type="button" onClick={() => dispatch({ type: 'clearMarks' })} disabled={!game.marks.some(Boolean)}>
               후보 비우기
-            </button>
-            <button type="button" className="primary" onClick={() => dispatch({ type: 'hint' })} disabled={solved}>
-              {hint && hintLevel < 3 ? '다음 힌트' : '힌트'}
             </button>
           </div>
 
