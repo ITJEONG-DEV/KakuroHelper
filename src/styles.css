@@ -805,3 +805,9 @@ a.app-tile:focus-visible {
     animation: none;
   }
 }
+
+.solved-toast.error {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-color: var(--danger);
+}

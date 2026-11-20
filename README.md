@@ -2,7 +2,7 @@
 
 가쿠로 문제를 풀면서 막힐 때 다음 한 단계를 힌트로 알려주는 PWA. 브라우저에서 쓰거나 휴대폰 홈 화면에 앱으로 설치할 수 있고, 설치 후에는 오프라인에서도 동작한다.
 
-**사용하기**: https://itjeong-dev.github.io/KakuroHelper/ · 함께 쓰는 앱: [스도쿠 도우미](https://itjeong-dev.github.io/SudokuHelper/) · [노노그램 도우미](https://itjeong-dev.github.io/NonogramHelper/)
+**사용하기**: https://itjeong-dev.github.io/KakuroHelper/ · 함께 쓰는 앱: [스도쿠 도우미](https://itjeong-dev.github.io/SudokuHelper/) · [노노그램 도우미](https://itjeong-dev.github.io/NonogramHelper/) · [지뢰찾기 도우미](https://itjeong-dev.github.io/MinesweeperHelper/)
 
 ## 규칙
 
@@ -59,7 +59,7 @@ main에 push하면 GitHub Actions(`.github/workflows/deploy.yml`)가 테스트·
 - `src/kakuro/solver.ts`: 줄 단위 추론(단계별 규칙, 칸마다 맞춰 보기)과 답 세기
 - `src/kakuro/hints.ts`: 힌트 엔진 (`findHint`, `applyHint`)
 - `src/kakuro/generate.ts`: 랜덤 문제 만들기 (흰 칸 배치 → 숫자 채우기 → 정한 단계 기법으로 끝까지 풀리게 숫자 고치기 → 난이도 맞추기). 화면이 멈추지 않게 `generate.worker.ts`에서 돌린다
-- `src/components/AppNav.tsx`: 퍼즐 도우미 앱 모음 (세 앱에 같은 파일)
-- `src/components/SolvedToast.tsx`: 다 풀었을 때 판 위 안내 (세 앱에 같은 파일)
-- `src/components/UpdateBanner.tsx`: 새 버전 새로고침 안내 (세 앱에 같은 파일)
+- `src/components/AppNav.tsx`: 퍼즐 도우미 앱 모음 (네 앱에 같은 파일)
+- `src/components/SolvedToast.tsx`: 판 위에 겹치는 안내(다 풀었을 때 등) (네 앱에 같은 파일)
+- `src/components/UpdateBanner.tsx`: 새 버전 새로고침 안내 (네 앱에 같은 파일)
 - `src/App.tsx`, `src/components/`: 화면
