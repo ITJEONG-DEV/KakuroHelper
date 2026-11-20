@@ -450,10 +450,10 @@ export default function App() {
             </label>
             <div className="footer-actions">
               <button type="button" className="link" onClick={() => dispatch({ type: 'quit' })}>
-                새 문제 고르기
+                새 게임
               </button>
               <button type="button" className="link" onClick={() => startRandom(game.size, game.level)} disabled={generating}>
-                {generating ? '만드는 중…' : '같은 조건으로 한 문제 더'}
+                {generating ? '만드는 중…' : '같은 조건으로 다시'}
               </button>
             </div>
           </div>
